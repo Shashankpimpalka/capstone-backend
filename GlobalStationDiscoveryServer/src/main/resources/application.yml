@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: global-station-discovery-server
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+
+
+
+  # transfer the settings to application.yml
