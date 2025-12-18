@@ -1,0 +1,77 @@
+CREATE TABLE actor (
+  actorId INT PRIMARY KEY,
+  firstName VARCHAR(50) ,
+  lastName VARCHAR(50) ,
+  gender CHAR(1),
+  age INT 
+);
+
+
+
+INSERT INTO actors (actor_id, first_name, last_name, gender, age) VALUES
+  (1, 'Akshay', 'Khanna', 'M', 30),
+  (2, 'Tom', 'Doe', 'F', 25),
+  (3, 'Ritesh', 'Deshmukh', 'M', 45),
+  (4, 'Alice', 'Johnson', 'F', 50),
+  (5, 'Vin', 'Diesel', 'M', 65),
+  (6, 'Emma', 'Watson', 'F', 32);
+
+
+CREATE TABLE admin (
+  admin_id INT PRIMARY KEY AUTO_INCREMENT,
+  first_name VARCHAR(50) NOT NULL,
+  last_name VARCHAR(50) NOT NULL,
+  password VARCHAR(50) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  email VARCHAR(50) NOT NULL UNIQUE
+);
+
+
+INSERT INTO admin (admin_id, first_name, last_name, password, phone, email) VALUES
+  (1,'Shashank', 'Pimpalkar', 'password123', '1234567890', 'shashnk@example.com'),
+  (2,'Tom', 'Harry', 'password456', '2345678901', 'tom@example.com'),
+  (3,'harry', 'Smith', 'password789', '3456789012', 'harry@example.com'),
+  (4,'Alice', 'Johnson', 'password321', '4567890123', 'alice@example.com');
+
+
+CREATE TABLE movie (
+  movie_id INT PRIMARY KEY AUTO_INCREMENT,
+  movie_title VARCHAR(255) NOT NULL,
+  movie_cost INT NOT NULL,
+  movie_year INT NOT NULL
+);
+
+
+
+INSERT INTO movies (movie_id, movie_title, movie_cost, movie_year) VALUES
+  (1,'The Shawshank Redemption', 10, 1994),
+  (2,'Godfather', 12, 2022),
+  (3,'The Dark Knight', 15, 2008),
+  (4,'The Lord ', 8, 2023),
+  (5,'Forrest Gump', 10, 2021),
+  (6,'The Matrix', 10, 2000),
+  (7,'Goodfellas', 8, 1990);
+
+
+
+CREATE TABLE review (
+  review_id INT PRIMARY KEY AUTO_INCREMENT,
+  date_posted DATE NOT NULL,
+  descr VARCHAR(255) NOT NULL,
+  rating INT NOT NULL,
+  movie_id INT NOT NULL,
+  admin_id INT NOT NULL,
+  FOREIGN KEY (movie_id) REFERENCES movie (movie_id),
+  FOREIGN KEY (admin_id) REFERENCES admin (admin_id)
+);
+
+
+INSERT INTO review (date_posted, descr, rating, movie_id, admin_id, review_id) VALUES
+  ('2022-01-01', 'This movie was fantastic!', 5, 1, 1,101),
+  ('2022-01-02', 'A classic film that everyone should see', 4, 2, 2,102),
+  ('2022-01-03', 'The special effects were amazing', 4, 3, 3,103),
+  ('2022-01-04', 'One of the best movies of all time', 5, 4, 4,104),
+  ('2022-01-05', ' inspirational', 5, 5, 1,105),
+  ('2022-01-06', 'sci-fi at its best', 4, 6, 2,106),
+  ('2022-01-07', 'The acting was superb', 4, 7, 3,107);
+
