@@ -1,0 +1,135 @@
+# Digital Platform – Microservices + AI Streaming Chatbot
+
+A **full-stack microservices-based digital platform** built using **Spring Boot, Angular, Eureka Service Discovery, API Gateway**, and **MySQL**, enhanced with a **local AI streaming chatbot** powered by **Ollama (Qwen2.5-Coder 7B)**.
+
+    - Designed microservices architecture with Eureka & Gateway
+    - Implemented CRUD operations using Hibernate & MySQL
+    - Built AI streaming chatbot using local LLM
+    - Integrated SSE for real-time responses
+    - Full-stack ownership: Angular + Spring Boot
+
+## 🚀 Key Features
+
+### 🎬 Core Digital Services (Microservices)
+    - Movie Management (CRUD)
+    - Actor Management (Add / Update / Delete)
+    - Movie Reviews & Ratings
+    - Hibernate + MySQL persistence
+    - RESTful APIs
+
+### 🤖 AI Chatbot (New Feature)
+    - Ask questions
+    - Local LLM using **Ollama**
+    - **Streaming responses (SSE)**
+    - Secure, offline, privacy-friendly AI
+
+---
+
+## 🏗️ Microservices Architecture
+        Angular Frontend
+        |
+        v
+        API Gateway (Spring Cloud Gateway)
+        |
+        v
+        Eureka Service Discovery
+        |
+        | Movie Service | Actor Service | Review Service |
+
+## 🏗️ Architecture
+        Angular Chat UI (SSE Client)
+        |
+        | HTTP / SSE
+        v
+        Spring Boot (WebClient)
+        |
+        | REST API
+        v
+        Ollama Server (localhost:11434)
+        |
+        v
+        Qwen2.5-Coder 7B Model
+
+
+## 🛠️ Tech Stack
+
+### Backend
+    - Java 21
+    - Spring Boot 3.x
+    - Spring Cloud Netflix (Eureka)
+    - Spring Cloud Gateway
+    - Spring Data JPA (Hibernate)
+    - MySQL
+    - WebClient (Non-blocking)
+    - Server-Sent Events (SSE)
+
+### Frontend
+    - Angular 20
+    - RxJS
+    - REST + SSE Integration
+
+### AI
+    - Ollama (Local LLM)
+    - Model: `qwen2.5-coder:7b`
+    - PDF Parsing: Apache PDFBox
+
+--
+
+## 📦 Services Overview
+
+    | Service | Description |
+    |------|------------|
+    | Discovery Server | Eureka service registry |
+    | API Gateway | Central entry point |
+    | Movie Service | CRUD operations for movies |
+    | Actor Service | Add / update / delete actors |
+    | Review Service | Ratings & reviews |
+    | AI Chat Service  |
+
+
+### AI
+    - Ollama
+    - Model: `qwen2.5-coder:7b`
+
+## 📦 Project Structure
+
+ digital-platform/
+     ├── discovery-server/
+     ├── api-gateway/
+     ├── movie-service/
+     ├── actor-service/
+     ├── review-service/
+     ├── ai-chat-service/
+     └── README.md
+
+     ├── frontend-angular/
+
+⚙️ Setup Instructions
+
+   cd backend
+   mvn spring-boot:run
+
+1️⃣ Install & Run Ollama
+   ```bash
+   brew install ollama
+   ollama serve
+   ollama pull qwen2.5-coder:7b
+
+2️⃣ Start Eureka Server
+   cd discovery-server
+   mvn spring-boot:run
+
+3️⃣ Start API Gateway
+   cd api-gateway
+   mvn spring-boot:run
+
+4️⃣ Start Microservices
+   mvn spring-boot:run
+
+5️⃣ Start Angular Frontend
+   cd frontend-angular
+   npm install
+   ng serve
+
+   Frontend URL:
+   http://localhost:4200
